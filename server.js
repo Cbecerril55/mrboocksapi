@@ -2,25 +2,42 @@ const express = require("express");
 const app = express();
 const database = require("./db");
 
-app.get('/', (req, res) => {
-   res.send('List all data');
+app.listen(5000, () => console.log("Express js server running!"));
+
+app.get("/libros", (req, res) => {
+  database.query("SELECT * FROM libros", (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+    res.end();
+  });
 });
 
-app.get('/autores', (req, res) => {
-    res.send('List all data');
+app.get("/autores", (req, res) => {
+  database.query("SELECT * FROM autores", (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+    res.end();
+  });
 });
 
-app.get('/usuarios', (req, res) => {
-    res.send('List all data');
+app.get("/usuarios", (req, res) => {
+  database.query("SELECT * FROM usuarios", (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+    res.end();
+  });
 });
 
-app.get('/libros', (req, res) => {
-    res.send('List all data');
+app.get("/", (req, res) => {
+  res.send("List all data");
 });
 
-app.get('/prestamos', (req, res) => {
-    res.send('List all data');
+app.get("/prestamos", (req, res) => {
+  database.query("SELECT * FROM prestamos", (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+    res.end();
+  });
 });
-
 
 app.listen(3000);

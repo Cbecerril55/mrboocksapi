@@ -1,18 +1,25 @@
-const mysql = require('mysql')
+const mysql = require("mysql2");
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '12583',
-  database: 'libreria'
-})
+  host: "localhost",
+  user: "root",
+  password: "12583",
+  database: "libreria",
+});
 
-connection.connect(function (error){
-    if (error) {
-        throw error;
-    } else {
-        console.log("MYSQL database has been connected!")
-    }
-})
+connection.connect(function (error) {
+  if (error) {
+    throw error;
+  } else {
+    console.log("MYSQL database has been connected!");
+  }
+});
+
+connection.query("SELECT * FROM libros", (err, result, fields) => {
+  if (err) throw err;
+
+  console.log(result);
+});
+
 
 module.exports = connection;
 
@@ -22,4 +29,4 @@ module.exports = connection;
   console.log('The solution is: ', rows[0].solution)
 }) */
 
-connection.end()
+/* connection.end() */
