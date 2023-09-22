@@ -4,6 +4,10 @@ const database = require("./db");
 
 app.listen(5000, () => console.log("Express js server running!"));
 
+app.get("/", (req, res) => {
+  res.send("List all data");
+});
+
 app.get("/libros", (req, res) => {
   database.query("SELECT * FROM libros", (err, result, fields) => {
     if (err) throw err;
@@ -26,10 +30,6 @@ app.get("/usuarios", (req, res) => {
     res.json(result);
     res.end();
   });
-});
-
-app.get("/", (req, res) => {
-  res.send("List all data");
 });
 
 app.get("/prestamos", (req, res) => {

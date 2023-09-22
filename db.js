@@ -14,13 +14,6 @@ connection.connect(function (error) {
   }
 });
 
-connection.query("SELECT * FROM libros", (err, result, fields) => {
-  if (err) throw err;
-
-  console.log(result);
-});
-
-
 module.exports = connection;
 
 /* connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
