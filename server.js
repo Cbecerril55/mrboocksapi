@@ -1,11 +1,19 @@
 const express = require("express");
 const app = express();
 const database = require("./db");
+var bodyParser = require("body-parser");
 
 app.listen(5000, () => console.log("Express js server running!"));
 
+//VISTAS
+app.set("views", "./views");
+app.set("view engine", "ejs");
+//MIDDLEWARE
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/", (req, res) => {
-  res.send("List all data");
+  res.render("index", { titulo: "APLICACION DE BIBLIOTECA" });
 });
 
 app.get("/libros", (req, res) => {
@@ -40,4 +48,26 @@ app.get("/prestamos", (req, res) => {
   });
 });
 
-app.listen(3000);
+app.post("/agregar-libro", (req, res) => {
+  database.query(`INSERT INTO Libros (Titulo, Genero) VALUES
+  ("${req.body.titulo}","${req.body.genero}");`, (err, result, fields) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log("Data logged succesfully!");
+    }
+  });
+  res.redirect("/")
+});
+
+app.post("/agregar-autor", (req, res) => {
+  database.query(`INSERT INTO Autores (Nombre, Nacionalidad) VALUES
+  ("${req.body.nombre}","${req.body.nacionalidad}");`, (err, result, fields) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log("Data logged succesfully!");
+    }
+  });
+  res.redirect("/")
+});

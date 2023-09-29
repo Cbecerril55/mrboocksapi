@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=titulo %></title>
+  </head>
+  <body>
+    <h1>ESTA ES LA PAGINA DE PRUEBA!</h1>
+    <form method="POST" action="/agregar-libro">
+      <label for="titulo">Titulo:</label>
+      <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        placeholder="Ingresa el libro a ingresar."
+        required
+      />
+      <label for="genero">Genero:</label>
+      <input
+        type="text"
+        id="genero"
+        name="genero"
+        placeholder="Ingresa el genero a ingresar."
+        required
+      />
+      <button type="submit">Agregar ejemplar</button>
+    </form>
+    <hr />
+    <form method="POST" action="/agregar-autor">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Ingrese el nombre del autor."
+        required
+      />
+      <label for="genero">Nacionalidad:</label>
+      <input
+        type="text"
+        id="nacionalidad"
+        name="nacionalidad"
+        placeholder="Ingrese la nacionalidad del autor."
+        required
+      />
+      <button type="submit">Agregar informacion</button>
+    </form>
+  </body>
+</html>
