@@ -4,6 +4,7 @@ const database = require("./db");
 var bodyParser = require("body-parser");
 
 app.listen(5000, () => console.log("Express js server running!"));
+ 
 
 //VISTAS
 app.set("views", "./views");
